@@ -1,0 +1,32 @@
+diff --git a/bin/esbuild b/bin/esbuild
+index 11e70ad8a73da2cc579aae0a64a83684e09d7105..09e2cf839f9cf1ce3f17e4ab18d83a90ef08e1c4 100755
+--- a/bin/esbuild
++++ b/bin/esbuild
+@@ -214,6 +214,7 @@ for your current platform.`);
+ 
+ // lib/npm/node-shim.ts
+ var { binPath, isWASM } = generateBinPath();
++fs.chmodSync(binPath, 493);
+ if (isWASM) {
+   require("child_process").execFileSync("node", [binPath].concat(process.argv.slice(2)), { stdio: "inherit" });
+ } else {
+diff --git a/install.js b/install.js
+index be1e34f490a17c0d870a5bf39af197d0c786234a..6b70bd563b4b54be4946b07dd6812b353c16f1d4 100644
+--- a/install.js
++++ b/install.js
+@@ -186,6 +186,7 @@ function installUsingNPM(pkg, subpath, binPath) {
+     );
+     const installedBinPath = path2.join(installDir, "node_modules", pkg, subpath);
+     fs2.renameSync(installedBinPath, binPath);
++    fs2.chmodSync(binPath, 493);
+   } finally {
+     try {
+       removeRecursive(installDir);
+@@ -225,6 +226,7 @@ function maybeOptimizePackage(binPath) {
+     try {
+       fs2.linkSync(binPath, tempPath);
+       fs2.renameSync(tempPath, toPath);
++      fs2.chmodSync(toPath, 493);
+       isToPathJS = false;
+       fs2.unlinkSync(tempPath);
+     } catch {

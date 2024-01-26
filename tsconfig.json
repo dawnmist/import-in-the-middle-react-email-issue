@@ -1,0 +1,44 @@
+{
+  "include": [
+    "types/**/*.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "server/instrumentation.ts"
+  ],
+  "exclude": [
+    "server/index.ts",
+    ".react-email/**/*"
+  ],
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES2022"
+    ],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": true,
+    "noErrorTruncation": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "paths": {
+      "#*": [
+        "./*"
+      ],
+    },
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "stripInternal": true,
+    "target": "ES2022",
+  }
+}
